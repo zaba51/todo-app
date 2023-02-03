@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <title>To Do</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="./js/app.js" type="module" defer></script>
+    </head>
+    <body>
+        <div class="all">
+
+            <form class="form" id="todoForm">
+                <div class="form-row">
+                    <label for="todoTitle" class="form-label">Tytuł</label>
+                    <input type="text" class="form-control" id="todoTitle" name="todoTitle">
+                </div>
+                <div class="form-row">
+                    <label class="form-label" for="todoMessage">Treść</label>
+                    <textarea class="form-control form-control-textarea" name="todoMessage" id="todoMessage"></textarea>
+                </div>
+                <div class="form-row">
+                    <label for="todoDate" class="form-label">Data</label>
+                    <input type="date" class="form-control" id="todoDate" name="todoDate" value="2020-01-06">
+                </div>
+                <div class="form-row form-row-last">
+                    <button type="submit" class="button form-button">Dodaj</button>
+                </div>
+            </form>
+
+            <div class="task-list-cnt">
+                <form class="task-list-search">
+                    <input type="search" id="todoSearch">
+                </form>
+                <div class="task-list">
+                    <template id="taskTemplate">
+                        <div class="task-inside">
+                            <div class="task-header">
+                                {{#if editMode}}
+                                <input type="date" class="task-date" value="{{date}}">
+                                {{else}}
+                                <h3 class="task-date">{{date}}</h3>
+                                {{/if}}
+            
+                                <div class="task-actions">
+                                    {{#unless editMode}}
+                                    <button class="task-edit" title="Edytuj zadanie">
+                                        Edytuj
+                                    </button>
+                                    {{/unless}}
+                                    <button class="task-delete" title="Usuń zadanie">
+                                        Usuń
+                                    </button>
+                                </div>
+                            </div>
+            
+                            <div>
+                                {{#if editMode}}
+                                <input type="text" class="task-title" value="{{title}}">
+                                {{else}}
+                                <div class="task-title">{{title}}</div>
+                                {{/if}}
+                            </div>
+            
+                            <div>
+                                {{#if editMode}}
+                                <textarea class="task-body">{{body}}</textarea>
+                                {{else}}
+                                <div class="task-body">{{body}}</div>
+                                {{/if}}
+                            </div>
+            
+                            {{#if editMode}}
+                            <div class="task-footer">
+                                <button class="button task-edit-save">Zapisz</button>
+                                <button class="button task-edit-cancel button-secondary">Anuluj</button>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </template> 
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

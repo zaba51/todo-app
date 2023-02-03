@@ -1,0 +1,32 @@
+.loading {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(#000, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(1px);
+    z-index: 2;
+
+    &::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(#000, 0.4);
+        border-right-color: #000;
+        border-radius: 50%;
+        animation: loading 0.5s 0s infinite linear;
+    }
+
+    @at-root {
+        @keyframes loading {
+            100% {
+                transform: rotate(1turn);
+            }
+        }
+    }
+}
+
